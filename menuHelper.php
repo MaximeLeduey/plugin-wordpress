@@ -11,6 +11,9 @@ Author URI: http://mon-siteweb.com/
 function my_admin_menu()
 {
   add_theme_page('Menu Helper', 'Menu Helper', 'manage_options', 'menuHelper.php', 'myplguin_admin_page', 3);
+
+	$my_js_ver  = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'js/script.js' ));
+	wp_enqueue_script( 'script_js', plugins_url( 'js/script.js', __FILE__ ), array(), $my_js_ver );
 }
 
 function myplguin_admin_page()
