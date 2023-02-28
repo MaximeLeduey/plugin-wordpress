@@ -10,7 +10,7 @@ Author URI: http://mon-siteweb.com/
 
 function my_admin_menu()
 {
-  add_menu_page('My Top Level Menu Example', 'Menu Helper', 'manage_options', 'myplugin/myplugin-admin-page.php', 'myplguin_admin_page', 'dashicons-welcome-widgets-menus', 6);
+  add_theme_page('Menu Helper', 'Menu Helper', 'manage_options', 'menuHelper.php', 'myplguin_admin_page', 3);
 }
 
 function myplguin_admin_page()
@@ -19,29 +19,30 @@ function myplguin_admin_page()
   <div class="wrap">
     <h2>Bienvenue dans mon plugin</h2>
   </div>
-  <select name="page-dropdown"
- onchange='document.location.href=this.options[this.selectedIndex].value;'> 
- <option value="">
-<?php echo esc_attr( __( 'Select page' ) ); ?></option> 
- <?php 
-  $pages = get_pages(); 
-  foreach ( $pages as $page ) {
-  	$option = '<option value="' . get_page_link( $page->ID ) . '">';
-	$option .= $page->post_title;
-	$option .= '</option>';
-	echo $option;
-  }
- ?>
-</select>
+  <ul>
+    <?php
+    all_pages();
+    ?>
+  </ul>
 <?php
 }
+
+function all_pages()
+{
+  $pages = get_pages();
+  foreach ($pages as $page) {
+    $li = '<li>
+      <input type="checkbox" id="' . $page->ID . '" name="' . $page->ID . '">
+      <label for="' . $page->ID . '">';
+    $li .= $page->post_title;
+    $li .= '</label></li>';
+    echo $li;
+  }
+}
+
+
 
 // Now we set that function up to execute when the admin_notices action is called.
 if (is_admin()) { // admin actions
   add_action('admin_menu', 'my_admin_menu');
-} else {
-  // non-admin enqueues, actions, and filters
 }
-
-// // Now we set that function up to execute when the admin_notices action is called.
-// add_action( 'admin_notices', 'bienvenue' );
