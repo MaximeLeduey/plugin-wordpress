@@ -34,7 +34,7 @@ function all_pages()
 {
   $pages = get_pages();
   foreach ($pages as $page) {
-    $li = '<li>
+    $li = '<li class="page">
       <input type="checkbox" id="' . $page->ID . '" name="' . $page->ID . '">
       <label for="' . $page->ID . '">';
     $li .= $page->post_title;
