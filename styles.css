@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pages {
+  min-height: 42px;
+  max-height: 200px;
+  overflow: auto;
+  padding: 0.9em;
+  border: solid 1px #dcdcde;
+  background-color: #fff;
+}
