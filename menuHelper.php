@@ -19,6 +19,20 @@ function myplguin_admin_page()
   <div class="wrap">
     <h2>Bienvenue dans mon plugin</h2>
   </div>
+  <select name="page-dropdown"
+ onchange='document.location.href=this.options[this.selectedIndex].value;'> 
+ <option value="">
+<?php echo esc_attr( __( 'Select page' ) ); ?></option> 
+ <?php 
+  $pages = get_pages(); 
+  foreach ( $pages as $page ) {
+  	$option = '<option value="' . get_page_link( $page->ID ) . '">';
+	$option .= $page->post_title;
+	$option .= '</option>';
+	echo $option;
+  }
+ ?>
+</select>
 <?php
 }
 
