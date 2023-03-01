@@ -60,7 +60,7 @@ button {
     left: 0;
     top: 0;
     cursor: move;
-    width: 100%;
+    width: 50px;
     height: 45px;
     text-indent: 70px;
     white-space: nowrap;
@@ -79,7 +79,7 @@ button {
     position: absolute;
     left: 0;
     top: 12px;
-    width: 100%;
+    width: 50px;
     text-align: center;
     text-indent: 0;
     color: #fff;
@@ -146,10 +146,15 @@ button {
     color: #a00;
 }
 
-.container {
+.row {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-around;
 }
+
+.column {
+    margin: 0 30px;
+}
+
 
 .pages {
     min-height: 42px;

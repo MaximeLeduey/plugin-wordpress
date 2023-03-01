@@ -1,6 +1,7 @@
 const select = document.getElementById('select-all');
 
 console.log(select);
+
 select.addEventListener("click", function () {
   var checkboxes = document.getElementsByClassName('page');
   for (var checkbox of checkboxes) {
@@ -28,6 +29,12 @@ jQuery(document).ready(function () {
       '<div class="dd-handle dd3-handle">Drag</div>' +
       '<div class="dd3-content">' +
       '<span>' + label + '</span>' +
+      '<div class="item-edit">Edit</div>' +
+      '</div>' +
+      '<div class="item-settings d-none">' +
+      '<p><label for="">Navigation Label<br><input type="text" name="navigation_label" value="' + label + '"></label></p>' +
+      '<p><a class="item-delete" href="javascript:;">Remove</a> |' +
+      '<a class="item-close" href="javascript:;">Close</a></p>' +
       '</div>' +
       '</li>';
 

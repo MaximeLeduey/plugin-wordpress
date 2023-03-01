@@ -21,27 +21,26 @@ function myplguin_admin_page()
   <div class="wrap">
     <h2>Bienvenue dans mon plugin</h2>
   </div>
-  <div class="container">
-    <div class="container_pages">
-      <ul class="pages">
-        <?php
-        all_pages();
-        ?>
-      </ul>
-      <input type="checkbox" id="select-all">
-      <label for="select-all">Selected all</label>
+  <div class="row">
+    <div class="column">
+      <form id="add-item">
+        <ul>
+          <?php all_pages() ?>
+        </ul>
+        <input type="checkbox" id="select-all" name="all" >
+        <label for="select-all">Selected all</label>
 
-      <button>Ajouter au menu</button>
+        <button type="submit">Ajouter au menu</button>
+      </form>
     </div>
-    <div class="dd" id="nestable">
+    <div class="column dd" id="nestable">
       <?php
-      all_pages2();
+      page_menu();
       ?>
     </div>
   </div>
 <?php
   wp_enqueue_script('script_js', plugins_url('js/script.js', __FILE__), array());
-  wp_enqueue_script('script_js', plugins_url('js/script2.js', __FILE__), array());
   wp_enqueue_script('scriptjq_js', plugins_url('js/jquery-3.4.1.min.js', __FILE__), array("jquery"));
   wp_enqueue_script('scriptjq2_js', plugins_url('js/jquery.nestable.js', __FILE__), array("jquery"));
 }
@@ -51,7 +50,7 @@ function all_pages()
   $pages = get_pages();
   foreach ($pages as $page) {
     $li = '<li>
-      <input type="checkbox" class="page" id="' . $page->ID . '" name="' . $page->ID . '">
+      <input type="checkbox" class="page" id="' . $page->ID . '" name="' . $page->post_title . '">
       <label for="' . $page->ID . '">';
     $li .= $page->post_title;
     $li .= '</label></li>';
@@ -59,7 +58,7 @@ function all_pages()
   }
 }
 
-function all_pages2()
+function page_menu()
 {
   $pages = get_pages();
 ?>
