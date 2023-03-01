@@ -27,7 +27,7 @@ function myplguin_admin_page()
         <ul>
           <?php all_pages() ?>
         </ul>
-        <input type="checkbox" id="select-all" name="all" >
+        <input type="checkbox" id="select-all" name="all">
         <label for="select-all">Selected all</label>
 
         <button type="submit">Ajouter au menu</button>
@@ -63,14 +63,7 @@ function page_menu()
   $pages = get_pages();
 ?>
   <ol class="dd-list">
-    <?php
-    foreach ($pages as $page) {
-      menuItem($page->ID, $page->post_title);
-    ?>
-      </li>
-    <?php
-    }
-    ?>
+    </li>
   </ol>
 <?php
 }
@@ -93,9 +86,7 @@ function menuItem($id, $label)
         </label>
       </p>
       <p>
-        <a class="item-delete" href="javascript:;">Retirer</a>
-        |
-        <a class="item-close" href="javascript:;">Annuler</a>
+        <a class="item-delete" href="javascript:;">Retirer</a> | <a class="item-close" href="javascript:;">Annuler</a>
       </p>
     </div>
   <?php

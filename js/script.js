@@ -1,9 +1,10 @@
-const select = document.getElementById('select-all');
+const select = document.getElementById('select-all'),
+  page = document.getElementsByClassName('page');
 
 console.log(select);
 
 select.addEventListener("click", function () {
-  var checkboxes = document.getElementsByClassName('page');
+  var checkboxes = page;
   for (var checkbox of checkboxes) {
     checkbox.checked = this.checked;
   }
@@ -22,27 +23,40 @@ jQuery(document).ready(function () {
   $("#add-item").submit(function (e) {
     e.preventDefault();
     id = Date.now();
-    var label = $("#add-item > [name='name']").val();
-    if ((label == "")) return;
-    var item =
-      '<li class="dd-item dd3-item" data-id="' + id + '" data-label="' + label + '">' +
-      '<div class="dd-handle dd3-handle">Drag</div>' +
-      '<div class="dd3-content">' +
-      '<span>' + label + '</span>' +
-      '<div class="item-edit">Edit</div>' +
-      '</div>' +
-      '<div class="item-settings d-none">' +
-      '<p><label for="">Navigation Label<br><input type="text" name="navigation_label" value="' + label + '"></label></p>' +
-      '<p><a class="item-delete" href="javascript:;">Remove</a> |' +
-      '<a class="item-close" href="javascript:;">Close</a></p>' +
-      '</div>' +
-      '</li>';
-
-    $("#nestable > .dd-list").append(item);
-    $("#nestable").find('.dd-empty').remove();
-    $("#add-item > [name='name']").val('');
-    $("#add-item > [name='url']").val('');
-    updateOutput();
+    let checkboxes = page;
+    for (var checkbox of checkboxes) {
+      if (checkbox.checked) {
+        console.log("check");
+        var label = checkbox.name;
+        console.log(label);
+        if ((label == "")) return;
+        var item =
+          '<li class="dd-item dd3-item" data-id="' + id + '" data-label="' + label + '">' +
+          '<div class="dd-handle dd3-handle">Drag</div>' +
+          '<div class="dd3-content">' +
+          '<span>' + label + '</span>' +
+          '<div class="item-edit">Edit</div>' +
+          '</div>' +
+          '<div class="item-settings d-none">' +
+          '<p><label for="">Navigation Label<br><input type="text" name="navigation_label" value="' + label + '"></label></p>' +
+          '<p><a class="item-delete" href="javascript:;">Remove</a> |' +
+          '<a class="item-close" href="javascript:;">Close</a></p>' +
+          '</div>' +
+          '</li>';
+        $("#nestable > .dd-list").append(item);
+        $("#nestable").find('.dd-empty').remove();
+        $("#add-item > [name='name']").val('');
+        $("#add-item > [name='url']").val('');
+        updateOutput();
+        checkbox.checked = false;
+        if (select.checked)
+        {
+          select.checked = false
+        }
+      } else {
+        console.log("pas check");
+      }
+    }
   });
 
   $("body").delegate(".item-delete", "click", function (e) {
