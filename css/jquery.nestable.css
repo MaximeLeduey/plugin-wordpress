@@ -29,22 +29,20 @@
   font-size: 13px;
   line-height: 20px; }
 
-.dd-handle {
-  display: block;
-  height: 30px;
-  margin: 5px 0;
-  padding: 5px 10px;
-  color: #333;
-  text-decoration: none;
-  font-weight: bold;
-  border: 1px solid #ccc;
-  background: #fafafa;
-  border-radius: 3px;
-  box-sizing: border-box; }
-  .dd-handle:hover {
-    color: #2ea8e5;
-    background: #fff; }
-
+  .dd-handle {
+    display: block;
+    height: 100%;
+    padding: 5px 10px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    border: 0px solid #ccc;
+    background: #434343;
+    box-sizing: border-box; }
+    .dd-handle:hover {
+      color: #2ea8e5;
+      background: #171717; }
+      
 .dd-item > button {
   position: relative;
   cursor: pointer;
