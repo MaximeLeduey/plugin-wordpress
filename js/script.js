@@ -49,8 +49,7 @@ jQuery(document).ready(function () {
         $("#add-item > [name='url']").val('');
         updateOutput();
         checkbox.checked = false;
-        if (select.checked)
-        {
+        if (select.checked) {
           select.checked = false
         }
       } else {
@@ -78,4 +77,11 @@ jQuery(document).ready(function () {
     $(this).closest(".dd-item").data("label", $(this).val());
     $(this).closest(".dd-item").find(".dd3-content span").text($(this).val());
   });
+
+  $("#sup").submit(function (e) {
+    e.preventDefault();
+    var div = '<div class="dd-empty"></div>';
+    $(".dd-list").empty();
+    $("#nestable").append(div);
+  })
 });

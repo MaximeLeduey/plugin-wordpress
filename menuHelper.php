@@ -22,18 +22,19 @@ function myplguin_admin_page()
     <h2>Bienvenue dans mon plugin</h2>
   </div>
   <div class="row">
-    <div class="column">
-      <form id="add-item">
-        <ul>
-          <?php all_pages() ?>
-        </ul>
-        <input type="checkbox" id="select-all" name="all">
-        <label for="select-all">Selected all</label>
+    <form id="add-item">
+      <ul>
+        <?php all_pages() ?>
+      </ul>
+      <input type="checkbox" id="select-all" name="all">
+      <label for="select-all">Selected all</label>
 
-        <button type="submit">Ajouter au menu</button>
+      <button type="submit">Ajouter au menu</button>
+    </form>
+    <div class="dd" id="nestable">
+      <form id="sup">
+        <button class="sup">Vider le menu</button>
       </form>
-    </div>
-    <div class="column dd" id="nestable">
       <?php
       page_menu();
       ?>
@@ -60,7 +61,6 @@ function all_pages()
 
 function page_menu()
 {
-  $pages = get_pages();
 ?>
   <ol class="dd-list">
     </li>
@@ -68,29 +68,30 @@ function page_menu()
 <?php
 }
 
-function menuItem($id, $label)
-{
-?>
-  <li class="dd-item dd3-item" data-id="<?= $id ?>" data-label="<?= $label ?>">
-    <div class="dd-handle dd3-handle">
-      Drag
-    </div>
-    <div class="dd3-content">
-      <span><?= $label ?></span>
-      <div class="item-edit">Edit</div>
-    </div>
-    <div class="item-settings d-none">
-      <p>
-        <label for="">Titre de la navigation<br>
-          <input type="text" name="navigation_label" value="<?= $label ?>">
-        </label>
-      </p>
-      <p>
-        <a class="item-delete" href="javascript:;">Retirer</a> | <a class="item-close" href="javascript:;">Annuler</a>
-      </p>
-    </div>
+
+// function menuItem($id, $label)
+// {
+// ?>
+   <!-- <li class="dd-item dd3-item" data-id="<?= $id ?>" data-label="<?= $label ?>">
+//     <div class="dd-handle dd3-handle">
+//       Drag
+//     </div>
+//     <div class="dd3-content">
+//       <span><?= $label ?></span>
+//       <div class="item-edit">Edit</div>
+//     </div>
+//     <div class="item-settings d-none">
+//       <p>
+//         <label for="">Titre de la navigation<br>
+//           <input type="text" name="navigation_label" value="<?= $label ?>">
+//         </label>
+//       </p>
+//       <p>
+//         <a class="item-delete" href="javascript:;">Retirer</a> | <a class="item-close" href="javascript:;">Annuler</a>
+//       </p>
+//     </div> -->
   <?php
-}
+// }
 
 
 add_action('admin_menu', 'my_admin_menu');

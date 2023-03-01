@@ -151,11 +151,6 @@ button {
     justify-content:space-around;
 }
 
-.column {
-    margin: 0 30px;
-}
-
-
 .pages {
     min-height: 42px;
     max-height: 200px;
