@@ -12,6 +12,7 @@ button {
 button {
     background: #333;
     color: #fff;
+    cursor: pointer;
 }
 
 /**
@@ -158,4 +159,14 @@ button {
     padding: 0.9em;
     border: solid 1px #dcdcde;
     background-color: #fff;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.d-none {
+   display: none; 
 }

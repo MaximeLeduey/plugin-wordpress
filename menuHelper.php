@@ -32,21 +32,25 @@ function myplguin_admin_page()
       <button type="submit">Ajouter au menu</button>
     </form>
     <div class="dd" id="nestable">
-      <form id="sup">
-        <button class="sup">Vider le menu</button>
-      </form>
-      <form id="enregister">
-        <button class="sup">Enregister</button>
-      </form>
       <?php
       page_menu();
       ?>
+
+      <div class="btn">
+        <form id="sup">
+          <button class="is-empty sup d-none">Vider le menu</button>
+        </form>
+        <form id="enregister">
+          <button class="is-empty sup d-none">Enregister</button>
+        </form>
+      </div>
     </div>
   </div>
 <?php
   wp_enqueue_script('script_js', plugins_url('js/script.js', __FILE__), array());
   wp_enqueue_script('scriptjq_js', plugins_url('js/jquery-3.4.1.min.js', __FILE__), array("jquery"));
   wp_enqueue_script('scriptjq2_js', plugins_url('js/jquery.nestable.js', __FILE__), array("jquery"));
+  wp_localize_script( 'manage_menu', 'ajax_url', admin_url( 'admin-ajax.php' ) );
 }
 
 function all_pages()

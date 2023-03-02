@@ -120,6 +120,15 @@ jQuery(document).ready(function () {
     $(this).closest(".dd-item").find(".dd3-content span").text($(this).val());
   });
 
+  $('.dd-list').bind('DOMSubtreeModified', function(){
+    if ($('.dd-list').is(':empty')){
+      $('.is-empty').addClass('d-none');
+    }
+    else {
+      $('.is-empty').removeClass('d-none');
+    }
+  });
+
   $("#sup").submit(function (e) {
     e.preventDefault();
     var div = '<div class="dd-empty"></div>';
