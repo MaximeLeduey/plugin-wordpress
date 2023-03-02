@@ -51,7 +51,7 @@ function all_pages()
   $pages = get_pages();
   foreach ($pages as $page) {
     $li = '<li>
-      <input type="checkbox" class="page" id="' . $page->ID . '" name="' . $page->post_title . '">
+      <input type="checkbox" class="page" id="' . $page->ID . '" name="' . $page->post_title . '" data-parent="' .$page->post_parent. '">
       <label for="' . $page->ID . '">';
     $li .= $page->post_title;
     $li .= '</label></li>';

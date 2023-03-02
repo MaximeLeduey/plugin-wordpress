@@ -1,5 +1,5 @@
 const select = document.getElementById('select-all'),
-  page = document.getElementsByClassName('page');
+  pages = document.getElementsByClassName('page');
 
 console.log(select);
 
@@ -23,15 +23,22 @@ jQuery(document).ready(function () {
   $("#add-item").submit(function (e) {
     e.preventDefault();
     id = Date.now();
-    let checkboxes = page;
+    let checkboxes = pages;
     for (var checkbox of checkboxes) {
       if (checkbox.checked) {
-        console.log("check");
+        var checkId = checkbox.id;
         var label = checkbox.name;
-        console.log(label);
+
+        console.log(checkId);
+
+        var page = $(`input`);
+
+        console.log(page);
+        console.log(page.data("parent"));
+        
         if ((label == "")) return;
         var item =
-          '<li class="dd-item dd3-item" data-id="' + id + '" data-label="' + label + '">' +
+          '<li class="dd-item dd3-item" data-id="' + id + '" data-label="' + label + '" > ' +
           '<div class="dd-handle dd3-handle">Drag</div>' +
           '<div class="dd3-content">' +
           '<span>' + label + '</span>' +
