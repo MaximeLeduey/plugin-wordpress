@@ -35,6 +35,9 @@ function myplguin_admin_page()
       <form id="sup">
         <button class="sup">Vider le menu</button>
       </form>
+      <form id="enregister">
+        <button class="sup">Enregister</button>
+      </form>
       <?php
       page_menu();
       ?>

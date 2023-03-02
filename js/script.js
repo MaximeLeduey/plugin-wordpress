@@ -44,42 +44,56 @@ jQuery(document).ready(function () {
         var current_id = page.data("current-id");
         var xfn = page.data("xfn");
 
-        console.log(page);
-        console.log(page.data("parent"));
-
-        if ((label == "")) return;
-        var item =
-          '<li class="dd-item dd3-item" ' +
-            'data-id="' + id + '"' +
-            'data-label="' + label + '"' +
-            'data-object="' + object + '"' +
-            'data-parent-id="' + parent_id + '"' +
-            'data-type="' + type + '"' +
-            'data-url="' + url + '"' +
-            'data-target="' + target + '"' +
-            'data-attr-title="' + attr_title + '"' +
-            'data-current-id="' + current_id + '"' +
-            'data-xfn="' + xfn + '">' +
-          '<div class="dd-handle dd3-handle">Drag</div>' +
-          '<div class="dd3-content">' +
-          '<span>' + label + '</span>' +
-          '<div class="item-edit">Edit</div>' +
-          '</div>' +
-          '<div class="item-settings d-none">' +
-          '<p><label for="">Navigation Label<br><input type="text" name="navigation_label" value="' + label + '"></label></p>' +
-          '<p><a class="item-delete" href="javascript:;">Remove</a> |' +
-          '<a class="item-close" href="javascript:;">Close</a></p>' +
-          '</div>' +
-          '</li>';
-        $("#nestable > .dd-list").append(item);
-        $("#nestable").find('.dd-empty').remove();
-        $("#add-item > [name='name']").val('');
-        $("#add-item > [name='url']").val('');
-        updateOutput();
-        checkbox.checked = false;
-        if (select.checked) {
-          select.checked = false
-        }
+        $.post(ajaxurl,
+          {
+            'action': 'add-menu-item',
+            'menu-item[-1][menu-item-object-id]': id,
+            'menu-item[-1][menu-item-db-id]': '0',
+            'menu-item[-1][menu-item-object]': object,
+            'menu-item[-1][menu-item-parent-id]': parent_id,
+            'menu-item[-1][menu-item-type]': type,
+            'menu-item[-1][menu-item-title]': title,
+            'menu-item[-1][menu-item-url]': url,
+            'menu-item[-1][menu-item-target]': target,
+            'menu-item[-1][menu-item-attr_title]': attr_title,
+            'menu-item[-1][menu-item-classes]': '',
+            'menu-item[-1][menu-item-xfn]': xfn,
+          },
+          function (response) {
+            if ((label == "")) return;
+            var item =
+              '<li class="dd-item dd3-item" ' +
+              'data-id="' + id + '"' +
+              'data-label="' + title + '"' +
+              'data-object="' + object + '"' +
+              'data-parent-id="' + parent_id + '"' +
+              'data-type="' + type + '"' +
+              'data-url="' + url + '"' +
+              'data-target="' + target + '"' +
+              'data-attr-title="' + attr_title + '"' +
+              'data-current-id="' + current_id + '"' +
+              'data-xfn="' + xfn + '">' +
+              '<div class="dd-handle dd3-handle">Drag</div>' +
+              '<div class="dd3-content">' +
+              '<span>' + label + '</span>' +
+              '<div class="item-edit">Edit</div>' +
+              '</div>' +
+              '<div class="item-settings d-none">' +
+              '<p><label for="">Navigation Label<br><input type="text" name="navigation_label" value="' + label + '"></label></p>' +
+              '<p><a class="item-delete" href="javascript:;">Remove</a> |' +
+              '<a class="item-close" href="javascript:;">Close</a></p>' +
+              '</div>' +
+              '</li>';
+            $("#nestable > .dd-list").append(item);
+            $("#nestable").find('.dd-empty').remove();
+            $("#add-item > [name='name']").val('');
+            $("#add-item > [name='url']").val('');
+            updateOutput();
+            checkbox.checked = false;
+            if (select.checked) {
+              select.checked = false
+            }
+          });
       } else {
         console.log("pas check");
       }
@@ -111,5 +125,7 @@ jQuery(document).ready(function () {
     var div = '<div class="dd-empty"></div>';
     $(".dd-list").empty();
     $("#nestable").append(div);
-  })
+  });
+
+
 });
