@@ -4,7 +4,7 @@ const select = document.getElementById('select-all'),
 console.log(select);
 
 select.addEventListener("click", function () {
-  var checkboxes = page;
+  var checkboxes = pages;
   for (var checkbox of checkboxes) {
     checkbox.checked = this.checked;
   }
@@ -33,12 +33,33 @@ jQuery(document).ready(function () {
 
         var page = $(`input`);
 
+        var id = checkId;
+        var parent_id = page.data("parent-id");
+        var object = page.data("object");
+        var title = label;
+        var type = page.data("type");
+        var url = page.data("url");
+        var target = page.data("target");
+        var attr_title = page.data("attr-title");
+        var current_id = page.data("current-id");
+        var xfn = page.data("xfn");
+
         console.log(page);
         console.log(page.data("parent"));
-        
+
         if ((label == "")) return;
         var item =
-          '<li class="dd-item dd3-item" data-id="' + id + '" data-label="' + label + '" > ' +
+          '<li class="dd-item dd3-item" ' +
+            'data-id="' + id + '"' +
+            'data-label="' + label + '"' +
+            'data-object="' + object + '"' +
+            'data-parent-id="' + parent_id + '"' +
+            'data-type="' + type + '"' +
+            'data-url="' + url + '"' +
+            'data-target="' + target + '"' +
+            'data-attr-title="' + attr_title + '"' +
+            'data-current-id="' + current_id + '"' +
+            'data-xfn="' + xfn + '">' +
           '<div class="dd-handle dd3-handle">Drag</div>' +
           '<div class="dd3-content">' +
           '<span>' + label + '</span>' +

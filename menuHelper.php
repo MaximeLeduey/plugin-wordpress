@@ -51,8 +51,18 @@ function all_pages()
   $pages = get_pages();
   foreach ($pages as $page) {
     $li = '<li>
-      <input type="checkbox" class="page" id="' . $page->ID . '" name="' . $page->post_title . '" data-parent="' .$page->post_parent. '">
-      <label for="' . $page->ID . '">';
+      <input type="checkbox" class="page"' .
+      'id="' . $page->ID . '" ' .
+      'name="' . $page->post_title . '"' .
+      'data-object="page"' .
+      'data-parent-id="' . $page->post_parent . '"' .
+      'data-type="post_type"' .
+      'data-url="' . get_permalink($page->ID) . '"' .
+      'data-target=""' .
+      'data-attr-title=""' .
+      'data-current-id=""' .
+      'data-xfn="">' .
+      '<label for="' . $page->ID . '">';
     $li .= $page->post_title;
     $li .= '</label></li>';
     echo $li;
@@ -71,8 +81,9 @@ function page_menu()
 
 // function menuItem($id, $label)
 // {
-// ?>
-   <!-- <li class="dd-item dd3-item" data-id="<?= $id ?>" data-label="<?= $label ?>">
+// 
+?>
+<!-- <li class="dd-item dd3-item" data-id="<?= $id ?>" data-label="<?= $label ?>">
 //     <div class="dd-handle dd3-handle">
 //       Drag
 //     </div>
@@ -90,7 +101,7 @@ function page_menu()
 //         <a class="item-delete" href="javascript:;">Retirer</a> | <a class="item-close" href="javascript:;">Annuler</a>
 //       </p>
 //     </div> -->
-  <?php
+<?php
 // }
 
 
