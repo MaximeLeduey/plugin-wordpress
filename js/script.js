@@ -98,7 +98,7 @@ jQuery(document).ready(function () {
         $(this).closest(".dd-item").data("label", $(this).val());
         $(this).closest(".dd-item").find(".dd3-content span").text($(this).val());
     });
-    $(this).closest(".dd-item").remove();
+    
     $('.dd-list').bind('DOMSubtreeModified', function () {
         if ($('.dd-list').is(':empty')) {
             $('.is-empty').addClass('d-none');
@@ -113,5 +113,6 @@ jQuery(document).ready(function () {
         var div = '<div class="dd-empty"></div>';
         $(".dd-list").children().closest(".dd-item").remove();
         $("#nestable").prepend(div);
+        updateOutput();
     });
 });
