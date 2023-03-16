@@ -2,7 +2,7 @@
 /*
 Plugin Name: Portfolio
 Plugin URI: http://gestionplugin.test/
-Description: This is a test
+Description: Créer ton portfolio facilement et rapidement avec ce plugin
 Author: Bienfait Alexandre
 Version: 1.0.0
 Author URI: http://mon-siteweb.com/
